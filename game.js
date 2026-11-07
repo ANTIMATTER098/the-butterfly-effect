@@ -38,7 +38,7 @@ function getSuffix() { return playerGender === 'uomo' ? 'o' : 'a'; }
 function getArticle() { return playerGender === 'uomo' ? 'un tipo' : 'una tipa'; }
 
 // ==========================================
-// EPISODIO 1: L'ABITO (Versione Estesa)
+// EPISODIO 1: L'ABITO
 // ==========================================
 function showEp1Bivio() {
     setBackground(''); 
@@ -143,7 +143,7 @@ function showEp1Finale(tipo) {
 }
 
 // ==========================================
-// EPISODIO 2: IL MESSAGGIO (Versione Estesa)
+// EPISODIO 2: IL MESSAGGIO
 // ==========================================
 function showEp2Bivio() {
     setBackground(''); 
