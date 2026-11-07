@@ -34,6 +34,7 @@ function setChoices(choices) {
     });
 }
 
+// Funzioni di supporto per il genere
 function getSuffix() { return playerGender === 'uomo' ? 'o' : 'a'; }
 function getArticle() { return playerGender === 'uomo' ? 'un tipo' : 'una tipa'; }
 
@@ -50,7 +51,6 @@ function showEp1Bivio() {
     ]);
 }
 
-// --- RAMO ELEGANTE ---
 function showEp1EleganteInizio() {
     let partner = playerGender === 'uomo' ? 'Mia' : 'Noah';
     let partnerImg = playerGender === 'uomo' ? 'mia.jpg' : 'noah.jpg';
@@ -72,11 +72,12 @@ function showEp1EleganteInizio() {
 function showEp1EleganteSceltaCibo(tipo) {
     let partner = playerGender === 'uomo' ? 'Mia' : 'Noah';
     let partnerAggettivo = playerGender === 'uomo' ? 'nervosa' : 'nervoso';
+    let colpitoSuffix = playerGender === 'uomo' ? 'a' : 'o';
     
     if (tipo === 'stessa') {
-        showText(`<strong>Tu:</strong> «Credo che prenderò anch'io i tagliolini. Sembrano fantastici.»<br><br>${partner} sorride, colpito/a.<br><br><strong>${partner}:</strong> «Ottima scelta. Vedo che abbiamo gli stessi gusti.»<br><br>La cena scorre. Tra una portata e l'altra, la tensione inizia a sciogliersi. A un certo punto, ${partner} si sporge verso di te.<br><br><strong>${partner}:</strong> «Posso dirti una cosa? Sono ${partnerAggettivo}. Non lo dico mai, ma tu mi metti un po' in soggezione.»`);
+        showText(`<strong>Tu:</strong> «Credo che prenderò anch'io i tagliolini. Sembrano fantastici.»<br><br>${partner} sorride, colpit${colpitoSuffix}.<br><br><strong>${partner}:</strong> «Ottima scelta. Vedo che abbiamo gli stessi gusti.»<br><br>La cena scorre. Tra una portata e l'altra, la tensione inizia a sciogliersi. A un certo punto, ${partner} si sporge verso di te.<br><br><strong>${partner}:</strong> «Posso dirti una cosa? Sono ${partnerAggettivo}. Non lo dico mai, ma tu mi metti un po' in soggezione.»`);
     } else {
-        showText(`<strong>Tu:</strong> «Io invece andrò di pizza. Ho una fame da lupi.»<br><br>${partner} scoppia a ridere, rompendo il ghiaccio.<br><br><strong>${partner}:</strong> «Pizza in un posto elegante? Rispetto assoluto.»<br><br>La tensione si scioglie di colpo. Ridete delle rispettive scelte. A un certo punto, ${partner} si sporge verso di te.<br><br><strong>${partner}:</strong> «Sai, ero ${partnerAggettivo}. Ma con te è impossibile esserlo.»`);
+        showText(`<strong>Tu:</strong> «Io invece andrò di pizza. Ho una fame da lupi.»<br><br>${partner} scoppia a ridere, rompendo il ghiaccio.<br><br><strong>${partner}:</strong> «Pizza in un posto elegante? Rispetto assoluto.»<br><br>La tensione si scioglie di colpo. Ridete delle rispettive scelte. A un certo punto, ${partner} si sporge verso di te.<br><br><strong>${partner}:</strong> «Sai, all'inizio avevo una certa soggezione. Ma con te è impossibile essere formali.»`);
     }
     
     setTimeout(() => {
@@ -86,7 +87,6 @@ function showEp1EleganteSceltaCibo(tipo) {
     }, 100);
 }
 
-// --- RAMO CASUAL ---
 function showEp1CasualInizio() {
     let partner = playerGender === 'uomo' ? 'Mia' : 'Noah';
     let partnerImg = playerGender === 'uomo' ? 'mia.jpg' : 'noah.jpg';
@@ -99,7 +99,7 @@ function showEp1CasualInizio() {
     setTimeout(() => {
         showText(`Mentre parlate del più e del meno, gesticolando per raccontare un aneddoto, colpisci in pieno il tuo bicchiere. Il liquido si rovescia ovunque sul tavolo.<br><br>Silenzio. Poi ${partner} scoppia a ridere.`);
         setChoices([
-            { text: "A) Ti scusi imbarazzat${getSuffix()}", action: () => showEp1CasualSceltaFiguraccia('scusi') },
+            { text: `A) Ti scusi imbarazzat${getSuffix()}`, action: () => showEp1CasualSceltaFiguraccia('scusi') },
             { text: "B) Ci ridi su e rilanci", action: () => showEp1CasualSceltaFiguraccia('ridi') }
         ]);
     }, 100);
@@ -121,7 +121,6 @@ function showEp1CasualSceltaFiguraccia(tipo) {
     }, 100);
 }
 
-// --- FINALE COMUNE EPISODIO 1 ---
 function showEp1Finale(tipo) {
     let partner = playerGender === 'uomo' ? 'Mia' : 'Noah';
     
@@ -149,7 +148,7 @@ function showEp2Bivio() {
     setBackground(''); 
     setCharacter('');
     
-    showText(`Sono passate un paio di settimane. Sera. Sei sul divano, avvolto/a in una coperta. Il telefono vibra: è il tuo migliore amico (il BFF).<br><br>Il messaggio dice: <em>"Ehi, ${playerName}. Tutto ok? È da un po' che non ti fai sentire. Ti vedo un po' strano/a ultimamente."</em><br><br>Ha ragione. Ultimamente hai una paura che ti attanaglia lo stomaco: la paura di restare da solo/a. Le dita esitano sulla tastiera.<br><br>Cosa gli scrivi?`);
+    showText(`Sono passate un paio di settimane. Sera. Sei sul divano, avvolto/a in una coperta. Il telefono vibra: è il tuo BFF.<br><br>Il messaggio dice: <em>"Ehi, ${playerName}. Tutto ok? È da un po' che non ti fai sentire. Ti vedo un po' strano/a ultimamente."</em><br><br>Ha ragione. Ultimamente hai una paura che ti attanaglia lo stomaco: la paura di restare da solo/a. Le dita esitano sulla tastiera.<br><br>Cosa gli scrivi?`);
     
     setChoices([
         { text: "A) Sincero e diretto", action: () => showEp2Diretto() },
@@ -163,9 +162,7 @@ function showEp2Diretto() {
     
     setTimeout(() => {
         showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>Hai superato le tue paure!!</p>`);
-        setChoices([
-            { text: "Prossimo Episodio (WIP)", action: () => alert("L'Episodio 3 arriverà presto!") }
-        ]);
+        setChoices([{ text: "Vai all'Episodio 3", action: () => showEp3Inizio() }]);
     }, 4000);
 }
 
@@ -174,9 +171,7 @@ function showEp2Scherzoso() {
     
     setTimeout(() => {
         showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>Ridere insieme vi ha reso più vicini!!</p>`);
-        setChoices([
-            { text: "Prossimo Episodio (WIP)", action: () => alert("L'Episodio 3 arriverà presto!") }
-        ]);
+        setChoices([{ text: "Vai all'Episodio 3", action: () => showEp3Inizio() }]);
     }, 4000);
 }
 
@@ -185,8 +180,128 @@ function showEp2Evasivo() {
     
     setTimeout(() => {
         showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>Esserci sempre, anche in silenzio!!</p>`);
-        setChoices([
-            { text: "Prossimo Episodio (WIP)", action: () => alert("L'Episodio 3 arriverà presto!") }
-        ]);
+        setChoices([{ text: "Vai all'Episodio 3", action: () => showEp3Inizio() }]);
+    }, 4000);
+}
+
+// ==========================================
+// EPISODIO 3: IL MEZZO PERSO
+// ==========================================
+function showEp3Inizio() {
+    setBackground(''); 
+    setCharacter('');
+    showText(`Sei fuori dalla fermata dell'autobus. L'autobus ti passa davanti e non si ferma. "Ultima corsa", dice il cartello luminoso.<br><br>La giornata era già lunga. Ti guardi intorno, cercando una soluzione per tornare a casa.`);
+    
+    setChoices([
+        { text: "A) Aspetti il prossimo (se mai arriverà)", action: () => showEp3Aspetta() },
+        { text: "B) Te ne torni a piedi", action: () => showEp3Piedi() },
+        { text: "C) Prendi una scorciatoia che non conosci", action: () => showEp3Scorciatoia() }
+    ]);
+}
+
+function showEp3Aspetta() {
+    setBackground('diner-casual.jpg');
+    showText(`Ti siedi sulla panchina. Il tempo passa lento. Non hai niente da fare, per una volta, e allora guardi.<br><br>La città che di solito attraversi di corsa: una signora che innaffia i fiori, un gatto che ti fissa, le luci che si accendono una a una. Ti accorgi che non guardavi niente da mesi.<br><br>Alla fine un passaggio arriva. Saluti il gatto.`);
+    
+    setTimeout(() => {
+        showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>A volte fermarsi è la corsa giusta!!</p>`);
+        setChoices([{ text: "Vai all'Episodio 4", action: () => showEp4Inizio() }]);
+    }, 4000);
+}
+
+function showEp3Piedi() {
+    setBackground('strada-notte.jpg');
+    showText(`Cammini. Le scarpe non sono da camminata lunga, ma resistono. Passi davanti a un posto che conosci bene — la scuola, il parco dove andavi da piccolo/a, il bar di un'amica.<br><br>Ti fermi un secondo. I ricordi arrivano senza chiedere permesso, e per una volta non fanno male.`);
+    
+    setTimeout(() => {
+        showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>La strada di casa sa sempre dove portarti!!</p>`);
+        setChoices([{ text: "Vai all'Episodio 4", action: () => showEp4Inizio() }]);
+    }, 4000);
+}
+
+function showEp3Scorciatoia() {
+    setBackground('strada-notte.jpg');
+    showText(`Giri in una via che non hai mai preso. Sbagli, torni indietro, sbagli di nuovo. Ma in mezzo agli errori trovi una piazzetta minuscola che non sapevi esistesse, con una panchina e un albero.<br><br>Ti ci siedi cinque minuti. Riparti. Arrivi a casa più tardi del previsto, ma con la sensazione di aver trovato un pezzetto di città tutto tuo.`);
+    
+    setTimeout(() => {
+        showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>Perdersi un po' fa trovare qualcosa!!</p>`);
+        setChoices([{ text: "Vai all'Episodio 4", action: () => showEp4Inizio() }]);
+    }, 4000);
+}
+
+// ==========================================
+// EPISODIO 4: LA TELEFONATA
+// ==========================================
+function showEp4Inizio() {
+    setBackground(''); 
+    setCharacter('');
+    showText(`Sera. Sei in camera tua, luci basse. Il telefono vibra sul comodino: numero sconosciuto.<br><br>Non è la prima volta che squilla, ma stavolta resti a guardarlo. Chi può essere a quest'ora?`);
+    
+    setChoices([
+        { text: "A) Rispondi", action: () => showEp4Rispondi() },
+        { text: "B) Non rispondi", action: () => showEp4NonRispondi() }
+    ]);
+}
+
+function showEp4Rispondi() {
+    showText(`<strong>Voce:</strong> «Pronto? Scusa se chiamo così, senza preavviso. Sono... non so se ti ricordi di me. Ti avevo prestato un libro, anni fa. Non me l'hai mai restituito.»<br><br>Ridi. Te lo ricordi eccome. Quella voce ti riporta a un periodo che credevi archiviato.<br><br><strong>Voce:</strong> «Lo sto rileggendo. E mi sono accorta che... certe cose le ho capite solo ora. Volevo dirtelo. Tutto qui.»<br><br>Non serve altro. Vi salutate con la promessa di risentirvi — e stavolta non è una frase di circostanza.`);
+    
+    setTimeout(() => {
+        showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>Certe voci tornano al momento giusto!!</p>`);
+        setChoices([{ text: "Vai all'Episodio 5", action: () => showEp5Inizio() }]);
+    }, 4000);
+}
+
+function showEp4NonRispondi() {
+    showText(`Lasci squillare. Poi, poco dopo, arriva un messaggio: <em>"Ciao, scusa il disturbo. Sono io, quella del libro che non mi hai mai restituito. Niente di importante, volevo solo dirti che lo sto rileggendo e mi è tornato in mente un periodo bello. Buona serata."</em><br><br>Resti a fissare lo schermo. Quella frase minima ti tiene sveglio/a.<br><br>Il giorno dopo, sei tu a scrivere: <em>"Il libro ce l'ho ancora. Possiamo prendere un caffè e te lo restituisco."</em>`);
+    
+    setTimeout(() => {
+        showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>A volte basta un messaggio per riaprire una porta!!</p>`);
+        setChoices([{ text: "Vai all'Episodio 5", action: () => showEp5Inizio() }]);
+    }, 4000);
+}
+
+// ==========================================
+// EPISODIO 5: L'OGGETTO DIMENTICATO
+// ==========================================
+function showEp5Inizio() {
+    setBackground(''); 
+    setCharacter('');
+    showText(`Sei già per strada, a metà del tragitto, quando ti accorgi che l'abbonamento dei mezzi è rimasto a casa. Devi attraversare tutta la città. Senza abbonamento sono guai — o forse no. Il prossimo mezzo sta arrivando.`);
+    
+    setChoices([
+        { text: "A) Torni indietro a prenderlo", action: () => showEp5TornaIndietro() },
+        { text: "B) Vai avanti lo stesso", action: () => showEp5VaiAvanti() },
+        { text: "C) Chiedi aiuto a qualcuno", action: () => showEp5ChiediAiuto() }
+    ]);
+}
+
+function showEp5TornaIndietro() {
+    setBackground('diner-casual.jpg');
+    showText(`Torni sui tuoi passi, sbuffando. Riapri la porta, cerchi, trovi l'abbonamento sotto un libro. Mentre sei lì, però, noti il disordine della tua stanza e ti ci fermi un secondo: quante cose hai lasciato in sospeso?<br><br>Prendi l'abbonamento, ma anche un biglietto che non aprivi da mesi. Lo leggi sul tram. Ti scalda.`);
+    
+    setTimeout(() => {
+        showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>A volte tornare indietro serve a trovare altro!!</p>`);
+        setChoices([{ text: "Fine del gioco (per ora!)", action: () => location.reload() }]);
+    }, 4000);
+}
+
+function showEp5VaiAvanti() {
+    setBackground('strada-notte.jpg');
+    showText(`Decidi di rischiare. Sale il controllore? No. La città scorre, e tu ti godi il viaggio con la leggerezza di chi l'ha scampata.<br><br>Arrivi a destinazione con un pensiero in testa: "Non è poi così grave, a volte le cose si sistemano da sole." E per una volta ci credi davvero.`);
+    
+    setTimeout(() => {
+        showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>A volte fidarsi del mondo funziona!!</p>`);
+        setChoices([{ text: "Fine del gioco (per ora!)", action: () => location.reload() }]);
+    }, 4000);
+}
+
+function showEp5ChiediAiuto() {
+    setBackground('diner-casual.jpg');
+    showText(`Ti avvicini a una persona alla fermata: «Scusa, ho dimenticato l'abbonamento. Sai mica come fare?»<br><br>Quella persona sorride, ti spiega un trucco, ti regala un biglietto di scorta. «Succede a tutti», dice. Ti sembra una piccola cosa, ma ti accompagna per tutto il giorno.`);
+    
+    setTimeout(() => {
+        showText(`<h2 style="color: #4caf50;">Good Ending!</h2><p>Un piccolo aiuto fa un grande viaggio!!</p>`);
+        setChoices([{ text: "Fine del gioco (per ora!)", action: () => location.reload() }]);
     }, 4000);
 }
