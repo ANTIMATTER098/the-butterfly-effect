@@ -1,6 +1,6 @@
 let playerName = "";
 let playerGender = "";
-const TEMPO_ATTESA = 30000; // 30 secondi di attesa
+const TEMPO_ATTESA = 10000; // 10 secondi di attesa
 
 function startGame(gender) {
     playerName = document.getElementById("player-name").value.trim() || "Amico/a";
@@ -149,7 +149,7 @@ function showEp1Finale(tipo) {
     }
 
     setChoicesConAttesa([
-        { text: "Torna al menu principale", action: () => tornaAlMenu() } // Torna al menu, non all'episodio 2!
+        { text: "Torna al menu principale", action: () => tornaAlMenu() }
     ]);
 }
 
