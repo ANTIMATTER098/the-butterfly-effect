@@ -6,9 +6,18 @@ function startGame(gender) {
     playerGender = gender;
 
     document.getElementById("start-screen").style.display = "none";
+    document.getElementById("menu-screen").style.display = "block";
+}
+
+function startFromEpisode(numero) {
+    document.getElementById("menu-screen").style.display = "none";
     document.getElementById("game-screen").style.display = "block";
 
-    showEp1Bivio();
+    if (numero === 1) showEp1Bivio();
+    else if (numero === 2) showEp2Bivio();
+    else if (numero === 3) showEp3Inizio();
+    else if (numero === 4) showEp4Inizio();
+    else if (numero === 5) showEp5Inizio();
 }
 
 function showText(text) {
@@ -34,7 +43,6 @@ function setChoices(choices) {
     });
 }
 
-// Funzioni di supporto per il genere
 function getSuffix() { return playerGender === 'uomo' ? 'o' : 'a'; }
 function getArticle() { return playerGender === 'uomo' ? 'un tipo' : 'una tipa'; }
 
