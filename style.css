@@ -8,7 +8,7 @@ body {
     height: 100vh;
     margin: 0;
     text-align: center;
-    overflow: hidden; /* Evita le barre di scorrimento */
+    overflow: hidden;
 }
 
 #background-image {
@@ -36,7 +36,7 @@ body {
 }
 
 #game-container {
-    background-color: rgba(42, 42, 53, 0.95); /* Sfondo semi-trasparente per leggere i testi */
+    background-color: rgba(42, 42, 53, 0.95);
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -47,6 +47,11 @@ body {
 }
 
 h1 {
+    color: #ffb347;
+    margin-bottom: 20px;
+}
+
+h2 {
     color: #ffb347;
     margin-bottom: 20px;
 }
@@ -83,12 +88,17 @@ button:hover {
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 30px;
-    text-align: left; /* Allinea il testo a sinistra, più leggibile */
+    text-align: left;
 }
 
-#choices-area button {
+#choices-area button, #menu-screen button {
     display: block;
     width: 100%;
     margin: 10px 0;
     text-align: center;
+}
+
+#menu-screen button {
+    text-align: left;
+    padding: 15px 20px;
 }
